@@ -82,7 +82,8 @@
         android:contentDescription="@string/description_like"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/ic_baseline_favorite_border_24"
-        tools:layout_editor_absoluteY="651dp" />
+        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck"
+        tools:layout_editor_absoluteY="651dp" />/>
 
     <TextView
         android:id="@+id/like"
@@ -104,7 +105,8 @@
         android:contentDescription="@string/description_shares"
         app:layout_constraintStart_toEndOf="@+id/like"
         app:srcCompat="@drawable/ic_baseline_share_24"
-        tools:layout_editor_absoluteY="651dp" />
+        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck"
+        tools:layout_editor_absoluteY="651dp" />/>
 
     <TextView
         android:id="@+id/shares_mum"
@@ -126,7 +128,8 @@
         android:contentDescription="@string/description_views"
         app:layout_constraintEnd_toStartOf="@+id/viewership_num"
         app:srcCompat="@drawable/ic_baseline_remove_red_eye_24"
-        tools:layout_editor_absoluteY="654dp" />
+        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck"
+        tools:layout_editor_absoluteY="654dp" />/>
 
     <TextView
         android:id="@+id/viewership_num"
