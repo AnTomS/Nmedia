@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="common_spacing">16dp</dimen>
+    <dimen name="posts_avatar_size">48dp</dimen>
+    <dimen name="button_text_size">text_size_like</dimen>
+    <dimen name="common_spacing_medium">common_spacing_medium</dimen>
+    <dimen name="button_size">button_size_viewer_ship</dimen>
+    <dimen name="common_spacing_large">comon_viewer_ship</dimen>
+</resources>
