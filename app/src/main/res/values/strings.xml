@@ -5,5 +5,5 @@
     <string name="description_shares" translatable="false">description_shares</string>
     <string name="description_views" translatable="false">description_views</string>
     <string name="post_author_avatar" translatable="false">post_author_avatar</string>
-    <string name="description_menu">description_menu</string>
+    <string name="description_menu" translatable="false">description_menu</string>
 </resources>
