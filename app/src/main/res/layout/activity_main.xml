@@ -12,7 +12,7 @@
         android:layout_width="@dimen/posts_avatar_size"
         android:layout_height="@dimen/posts_avatar_size"
         android:layout_marginBottom="@dimen/common_spacing"
-        android:contentDescription="post_author_avatar"
+        android:contentDescription="@string/post_author_avatar"
         app:layout_constraintBottom_toBottomOf="@id/barrier"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -79,6 +79,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
+        android:contentDescription="@string/description_like"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/ic_baseline_favorite_border_24"
         tools:layout_editor_absoluteY="651dp" />
@@ -96,11 +97,13 @@
 
     <ImageButton
         android:id="@+id/shares"
-        android:layout_width="63dp"
-        android:layout_height="43dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_centerHorizontal="@+id/likes"
+        android:layout_marginStart="48dp"
+        android:contentDescription="@string/description_shares"
+        app:layout_constraintStart_toEndOf="@+id/like"
         app:srcCompat="@drawable/ic_baseline_share_24"
-        tools:layout_editor_absoluteX="119dp"
         tools:layout_editor_absoluteY="651dp" />
 
     <TextView
@@ -120,6 +123,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="12dp"
+        android:contentDescription="@string/description_views"
         app:layout_constraintEnd_toStartOf="@+id/viewership_num"
         app:srcCompat="@drawable/ic_baseline_remove_red_eye_24"
         tools:layout_editor_absoluteY="654dp" />

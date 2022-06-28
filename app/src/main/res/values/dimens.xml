@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="posts_avatar_size">posts_avatar_size</dimen>
+    <dimen name="common_spacing_extra_large">32dp</dimen>
+    <dimen name="common_spacing_large">16dp</dimen>
+    <dimen name="common_spacing_medium">8dp</dimen>
+    <dimen name="common_spacing_small">4dp</dimen>
+    <dimen name="common_spacing_0dp">0dp</dimen>
+
+    <dimen name="posts_avatar_size">48dp</dimen>
+    <dimen name="button_size">24dp</dimen>
+
+    <dimen name="button_text_size">14sp</dimen>
     <dimen name="common_spacing">common_spacing</dimen>
-    <dimen name="common_spacing_medium">common_spacing_medium</dimen>
-    <dimen name="button_text_size">button_text_size</dimen>
 </resources>
