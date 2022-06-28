@@ -5,9 +5,7 @@ plugins {
 
 android {
     compileSdk 32
-    aaptOptions {
-        cruncherEnabled = false
-    }
+
 
     defaultConfig {
         applicationId "com.example.nmedia"
