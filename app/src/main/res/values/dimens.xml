@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="posts_avatar_size">posts_avatar_size</dimen>
+    <dimen name="common_spacing">common_spacing</dimen>
+    <dimen name="common_spacing_medium">common_spacing_medium</dimen>
+    <dimen name="button_text_size">button_text_size</dimen>
+</resources>
