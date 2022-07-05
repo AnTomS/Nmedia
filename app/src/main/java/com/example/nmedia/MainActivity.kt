@@ -48,8 +48,8 @@ class MainActivity : AppCompatActivity() {
                     formatCount(post.likeCount)
             }
             shares.setOnClickListener() {
-                post.shares_num++
-                sharesNum.text = formatCount(post.shares_num)
+                post.sharesNum++
+                sharesNum.text = formatCount(post.sharesNum)
 
             }
 
