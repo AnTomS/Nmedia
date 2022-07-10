@@ -2,7 +2,6 @@ package com.example.nmedia
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.TextView
 import androidx.activity.viewModels
 import com.example.nmedia.databinding.ActivityMainBinding
 import com.example.nmedia.viewmodel.PostViewModel
@@ -23,6 +22,8 @@ class MainActivity : AppCompatActivity() {
                 content.text = post.content
                 published.text = post.published
                 author.text = post.author
+                like.text = formatCount(post.likeCount)
+                sharesNum.text = formatCount(post.shareCount)
                 val likeImage = if (post.liked) {
                     (R.drawable.ic_baseline_favorite_24)
                 } else {
@@ -30,17 +31,12 @@ class MainActivity : AppCompatActivity() {
                 }
                 likes.setImageResource(likeImage)
             }
-            binding.shares.setOnClickListener() {
+            binding.shares.setOnClickListener {
                 viewModel.share()
-                binding.sharesNum.text =
-                    formatCount(post.shareCount)
             }
 
             binding.likes.setOnClickListener {
                 viewModel.like()
-                binding.like.text =
-                    formatCount(post.likeCount)
-
             }
         }
 
