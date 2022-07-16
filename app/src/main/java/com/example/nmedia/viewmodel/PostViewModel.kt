@@ -5,13 +5,10 @@ import com.example.nmedia.repository.InMemoryPostRepository
 import com.example.nmedia.repository.PostRepository
 
 
-class PostViewModel : ViewModel(){
-    private val repository : PostRepository = InMemoryPostRepository()
+class PostViewModel : ViewModel() {
+    private val repository: PostRepository = InMemoryPostRepository()
     val data = repository.get()
-    fun like(){
-        repository.like()
-    }
-    fun share(){
-        repository.share()
-    }
+    fun likeById(id: Long) = repository.likeById(id)
+
+    fun share(id: Long) = repository.share(id)
 }
