@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Nmedia</string>
     <string name="nmedia">NMedia!</string>
     <string name="description_like" translatable="false">description_like</string>
@@ -6,4 +6,11 @@
     <string name="description_views" translatable="false">description_views</string>
     <string name="post_author_avatar" translatable="false">post_author_avatar</string>
     <string name="description_menu" translatable="false">description_menu</string>
+    <string name="post_menu_remove" tools:ignore="MissingTranslation" translatable="false">Remove</string>
+    <string name="post_input_text" tools:ignore="MissingTranslation" translatable="false">Post text</string>
+    <string name="empty_post_error" tools:ignore="MissingTranslation" translatable="false">Post is blank</string>
+    <string name="menu_edit" tools:ignore="MissingTranslation">Edit</string>
+    <string name="edit_message" tools:ignore="MissingTranslation">Edit massage</string>
+    <string name="description_cancel" tools:ignore="MissingTranslation">description cancel</string>
+    <string name="description_bottom_line_edit" tools:ignore="MissingTranslation">Description bottom edit</string>
 </resources>

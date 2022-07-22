@@ -5,8 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import com.example.nmedia.dto.Post
 
 class InMemoryPostRepository : PostRepository {
-
-    private var index: Long = 1
+private var index : Long =1
     private var posts = listOf(
         Post(
             id = index++,
@@ -33,7 +32,7 @@ class InMemoryPostRepository : PostRepository {
             author = "Нетология. Университет интернет-профессий будущего",
             authorAvatar = "",
             published = "21 мая в 21:00",
-            content =  "Делиться впечатлениями о любимых фильмах легко, а что если рассказать так, чтобы все заскучали \uD83D\uDE34\n",
+            content = "Делиться впечатлениями о любимых фильмах легко, а что если рассказать так, чтобы все заскучали \uD83D\uDE34\n",
             likeCount = 1156,
             shareCount = 800,
         ),
@@ -72,4 +71,29 @@ class InMemoryPostRepository : PostRepository {
         data.value = posts
     }
 
+    override fun removeById(id: Long) {
+        posts = posts.filter { it.id != id }
+        data.value = posts
+    }
+
+    override fun save(post: Post) {
+        data.value = if (post.id == 0L) {
+            listOf(
+                post.copy(
+                    id = index++,
+                    author = "Me",
+                    published = "now",
+                    liked = false,
+                    likeCount = 0,
+                    shareCount = 0
+                )
+            ) + posts
+        } else {
+            posts.map {
+                if (it.id != post.id) it else it.copy(content = post.content)
+            }
+        }
+        posts = data.value.orEmpty()
+    }
 }
+
