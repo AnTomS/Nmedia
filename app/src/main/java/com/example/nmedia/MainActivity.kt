@@ -46,13 +46,14 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         )
-        viewModel.edited.observe(this){ post ->
-            if (post.id ==0L){
+        viewModel.edited.observe(this) { edited ->
+            if (edited.id == 0L) {
                 return@observe
             }
-            binding.content.setText(post.content)
+            binding.content.setText(edited.content)
             binding.content.requestFocus()
         }
+
 
         binding.save.setOnClickListener() {
             if (binding.content.text.isNullOrBlank()) {
@@ -73,10 +74,12 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.cancel.setOnClickListener {
+            viewModel.editingClear()
             with(binding.content) {
                 setText("")
                 clearFocus()
                 AndroidUtils.hideKeyboard(this)
+
                 binding.group.visibility = View.GONE
             }
         }
@@ -84,11 +87,8 @@ class MainActivity : AppCompatActivity() {
         binding.list.adapter = adapter
 
         viewModel.data.observe(this) { posts ->
-            val newPost = adapter.itemCount < posts.size
-            adapter.submitList(posts) {
-                if (newPost) binding.list.smoothScrollToPosition(0)
-            }
+            adapter.submitList(posts)
+        }
     }
-}
 }
 

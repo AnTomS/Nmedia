@@ -5,10 +5,9 @@ import androidx.lifecycle.MutableLiveData
 import com.example.nmedia.dto.Post
 
 class InMemoryPostRepository : PostRepository {
-private var index : Long =1
     private var posts = listOf(
         Post(
-            id = index++,
+            id = 9,
             author = "Нетология. Университет интернет-профессий будущего",
             authorAvatar = "",
             published = "21 марта в 11:21",
@@ -18,7 +17,7 @@ private var index : Long =1
             shareCount = 97,
         ),
         Post(
-            id = index++,
+            id = 8,
             author = "Нетология. Университет интернет-профессий будущего",
             authorAvatar = "",
             published = "01 апреля в 12:11",
@@ -28,7 +27,7 @@ private var index : Long =1
             shareCount = 197,
         ),
         Post(
-            id = index++,
+            id = 7,
             author = "Нетология. Университет интернет-профессий будущего",
             authorAvatar = "",
             published = "21 мая в 21:00",
@@ -38,7 +37,7 @@ private var index : Long =1
         ),
 
         Post(
-            id = index++,
+            id = 6,
             author = "Нетология. Университет интернет-профессий будущего",
             authorAvatar = "",
             published = "12 июля в 18:36",
@@ -77,10 +76,10 @@ private var index : Long =1
     }
 
     override fun save(post: Post) {
-        data.value = if (post.id == 0L) {
+        posts = if (post.id == 0L) {
             listOf(
                 post.copy(
-                    id = index++,
+                    id = posts.firstOrNull()?.id ?: 1L + 1,
                     author = "Me",
                     published = "now",
                     liked = false,
@@ -90,10 +89,10 @@ private var index : Long =1
             ) + posts
         } else {
             posts.map {
-                if (it.id != post.id) it else it.copy(content = post.content)
+                if (it.id == post.id) it.copy(content = post.content) else it
             }
         }
-        posts = data.value.orEmpty()
+        data.value = posts
     }
 }
 
