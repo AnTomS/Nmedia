@@ -5,11 +5,9 @@ import androidx.lifecycle.MutableLiveData
 import com.example.nmedia.dto.Post
 
 class InMemoryPostRepository : PostRepository {
-
-    private var index: Long = 1
     private var posts = listOf(
         Post(
-            id = index++,
+            id = 9,
             author = "Нетология. Университет интернет-профессий будущего",
             authorAvatar = "",
             published = "21 марта в 11:21",
@@ -19,7 +17,7 @@ class InMemoryPostRepository : PostRepository {
             shareCount = 97,
         ),
         Post(
-            id = index++,
+            id = 8,
             author = "Нетология. Университет интернет-профессий будущего",
             authorAvatar = "",
             published = "01 апреля в 12:11",
@@ -29,17 +27,17 @@ class InMemoryPostRepository : PostRepository {
             shareCount = 197,
         ),
         Post(
-            id = index++,
+            id = 7,
             author = "Нетология. Университет интернет-профессий будущего",
             authorAvatar = "",
             published = "21 мая в 21:00",
-            content =  "Делиться впечатлениями о любимых фильмах легко, а что если рассказать так, чтобы все заскучали \uD83D\uDE34\n",
+            content = "Делиться впечатлениями о любимых фильмах легко, а что если рассказать так, чтобы все заскучали \uD83D\uDE34\n",
             likeCount = 1156,
             shareCount = 800,
         ),
 
         Post(
-            id = index++,
+            id = 6,
             author = "Нетология. Университет интернет-профессий будущего",
             authorAvatar = "",
             published = "12 июля в 18:36",
@@ -72,4 +70,29 @@ class InMemoryPostRepository : PostRepository {
         data.value = posts
     }
 
+    override fun removeById(id: Long) {
+        posts = posts.filter { it.id != id }
+        data.value = posts
+    }
+
+    override fun save(post: Post) {
+        posts = if (post.id == 0L) {
+            listOf(
+                post.copy(
+                    id = posts.firstOrNull()?.id ?: 1L + 1,
+                    author = "Me",
+                    published = "now",
+                    liked = false,
+                    likeCount = 0,
+                    shareCount = 0
+                )
+            ) + posts
+        } else {
+            posts.map {
+                if (it.id == post.id) it.copy(content = post.content) else it
+            }
+        }
+        data.value = posts
+    }
 }
+
