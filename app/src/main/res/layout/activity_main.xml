@@ -1,33 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".activity.MainActivity">
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/edit_barrier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/common_spacing_large"
+        android:background="@android:color/transparent"
+        android:orientation="horizontal"
+        app:barrierDirection="top"
+        app:constraint_referenced_ids="edit_message, cancel" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/list"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintBottom_toTopOf="@id/toolsTop"
+        app:layout_constraintBottom_toTopOf="@id/edit_barrier"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        tools:listitem="@layout/card_post" />
+        tools:listitem="@layout/card_post">
+
+    </androidx.recyclerview.widget.RecyclerView>
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/toolsTop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:barrierDirection="top"
         android:orientation="horizontal"
-        app:constraint_referenced_ids="content,save"/>
-
+        app:barrierDirection="top"
+        app:constraint_referenced_ids="content,save" />
 
     <EditText
         android:id="@+id/content"
@@ -43,22 +51,14 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
-        app:layout_constraintTop_toTopOf="@+id/content"
         android:id="@+id/save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
         android:padding="@dimen/common_spacing_large"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/content"
         app:srcCompat="@drawable/ic_baseline_send_24" />
-
-    <androidx.constraintlayout.widget.Barrier
-        android:id="@+id/edit_barrier"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/common_spacing_large"
-        android:orientation="horizontal"
-        app:barrierDirection="top" />
 
     <androidx.constraintlayout.widget.Group
         android:id="@+id/group"
@@ -68,8 +68,10 @@
         app:constraint_referenced_ids="edit_message, bottom_line_edit,cancel, edit_message_drow"
         app:layout_constraintBottom_toTopOf="@id/toolsTop"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_barrier" />
+        app:layout_constraintTop_toBottomOf="@+id/edit_barrier"
+        app:layout_constraintVertical_bias="0.489" />
 
     <TextView
         android:id="@+id/edit_message"
@@ -81,18 +83,10 @@
         android:text="@string/edit_message"
         android:textColor="@color/blue"
         android:textSize="@dimen/edit_text_size"
-        app:layout_constraintBottom_toTopOf="@+id/barrier_top"
+        app:layout_constraintBottom_toTopOf="@id/content_check"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/list"
         tools:ignore="RtlSymmetry" />
-
-    <androidx.constraintlayout.widget.Barrier
-        android:id="@+id/barrier_top"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/edit_message"
-        app:layout_constraintBottom_toTopOf="@id/list"
-        android:orientation="horizontal"
-        app:barrierDirection="top"/>
 
     <ImageView
         android:id="@+id/edit_message_drow"
@@ -101,8 +95,8 @@
         android:padding="@dimen/common_spacing_medium"
         android:src="@drawable/ic_baseline_edit_24"
         app:layout_constraintBottom_toBottomOf="@+id/edit_message"
-        app:layout_constraintTop_toTopOf="@+id/edit_message"
-        app:layout_constraintEnd_toStartOf="@+id/edit_message"/>
+        app:layout_constraintEnd_toStartOf="@+id/edit_message"
+        app:layout_constraintTop_toTopOf="@+id/edit_message" />
 
     <ImageView
         android:id="@+id/cancel"
@@ -111,35 +105,34 @@
         android:contentDescription="@string/description_cancel"
         android:padding="@dimen/common_spacing_medium"
         android:src="@drawable/ic_baseline_cancel_24"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/toolsTop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/list" />
 
-<!--    <TextView-->
-<!--        android:id="@+id/content_check"-->
-<!--        android:layout_width="369dp"-->
-<!--        android:layout_height="32dp"-->
-<!--        android:layout_marginBottom="667dp"-->
-<!--        android:ellipsize="end"-->
-<!--        android:paddingStart="@dimen/common_spacing_medium"-->
-<!--        android:paddingBottom="@dimen/common_spacing_medium"-->
-<!--        android:singleLine="true"-->
-<!--        android:textSize="@dimen/edit_text_size"-->
-<!--        app:layout_constraintBottom_toBottomOf="@+id/list"-->
-<!--        app:layout_constraintEnd_toStartOf="@+id/cancel"-->
-<!--        app:layout_constraintHorizontal_bias="1.0"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/edit_message"-->
-<!--        tools:ignore="RtlSymmetry"-->
-<!--        tools:text="message" />-->
+    <TextView
+        android:id="@+id/content_check"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:paddingStart="@dimen/common_spacing_medium"
+        android:paddingBottom="@dimen/common_spacing_medium"
+        android:singleLine="true"
+        android:textSize="@dimen/edit_text_size"
+        app:layout_constraintBottom_toTopOf="@+id/toolsTop"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edit_message"
+        tools:ignore="RtlSymmetry"
+        tools:text="message" />
 
     <ImageView
         android:id="@+id/bottom_line_edit"
-        android:background="@android:color/transparent"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
         android:contentDescription="@string/description_bottom_line_edit"
+        app:layout_constraintBottom_toTopOf="@id/toolsTop"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

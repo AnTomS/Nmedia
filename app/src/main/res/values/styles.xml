@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.NMedia.LikeButton"
+        parent="Widget.MaterialComponents.Button.TextButton.Icon">
+        <item name="android:textColor">@color/text_checkbox_tint</item>
+        <item name="iconTint">@color/like_checkbox_tint</item>
+        <item name="rippleColor">@color/white</item>
+        <item name="backgroundTint">@android:color/transparent</item>
+        <item name="minWidth">@dimen/icon_button_min_size</item>
+        <item name="minHeight">@dimen/icon_button_min_size</item>
+    </style>
+    <style name="Theme.NMedia.ShareViewedButton"
+        parent="Widget.MaterialComponents.Button.TextButton.Icon">
+        <item name="android:textColor">@color/text_checkbox_tint</item>
+        <item name="iconTint">@color/icon_color_dark_grey</item>
+        <item name="rippleColor">@color/white</item>
+        <item name="backgroundTint">@android:color/transparent</item>
+        <item name="minWidth">@dimen/icon_button_min_size</item>
+        <item name="minHeight">@dimen/icon_button_min_size</item>
+    </style>
+    <style name="Theme.NMedia.MenuButton"
+        parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:textColor">@color/text_checkbox_tint</item>
+        <item name="iconTint">@color/icon_color_dark_grey</item>
+        <item name="rippleColor">@color/white</item>
+        <item name="backgroundTint">@android:color/transparent</item>
+        <item name="iconGravity">textStart</item>
+        <item name="minWidth">@dimen/icon_button_min_size</item>
+        <item name="maxWidth">@dimen/icon_button_min_size</item>
+        <item name="minHeight">@dimen/icon_button_min_size</item>
+    </style>
+
+
+</resources>
