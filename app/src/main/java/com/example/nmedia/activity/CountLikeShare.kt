@@ -1,4 +1,4 @@
-package com.example.nmedia
+package com.example.nmedia.activity
 
 import android.icu.text.DecimalFormat
 import java.lang.Math.round

@@ -1,10 +1,11 @@
-package com.example.nmedia
+package com.example.nmedia.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
+import com.example.nmedia.R
 import com.example.nmedia.adapter.OnInterfuctionListener
 import com.example.nmedia.adapter.PostsAdapter
 import com.example.nmedia.databinding.ActivityMainBinding

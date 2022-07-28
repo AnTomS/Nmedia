@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.nmedia.R
 import com.example.nmedia.databinding.CardPostBinding
 import com.example.nmedia.dto.Post
-import com.example.nmedia.formatCount
+import com.example.nmedia.activity.formatCount
 import com.example.nmedia.repository.PostDiffCallback
 
 
@@ -49,14 +49,9 @@ class PostViewHolder(
             author.text = post.author
             published.text = post.published
             content.text = post.content
-            like.text = formatCount(post.likeCount)
-            sharesNum.text = formatCount(post.shareCount)
-            val likeImage = if (post.liked) {
-                (R.drawable.ic_baseline_favorite_24)
-            } else {
-                R.drawable.ic_baseline_favorite_border_24
-            }
-            likes.setImageResource(likeImage)
+            likes.text = formatCount(post.likeCount)
+            shares.text= formatCount(post.shareCount)
+            likes.isChecked = post.liked
 
             shares.setOnClickListener {
                 listener.onShare(post)
