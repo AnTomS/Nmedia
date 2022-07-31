@@ -13,11 +13,10 @@ class EditPostActivity : AppCompatActivity() {
         val binding = ActivityEditPostBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
-        binding.content
-        val content = intent.getStringExtra(Intent.EXTRA_TEXT)
         binding.content.requestFocus()
-        binding.content.setText(content)
+        intent.getStringExtra(Intent.EXTRA_TEXT)?.let {
+            binding.content.setText(it)
+        }
 
 
         binding.save.setOnClickListener {

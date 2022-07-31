@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity() {
             text ?: return@registerForActivityResult
             viewModel.editContent(text)
             viewModel.save()
-            viewModel.editingClear()
+
         }
 
 
