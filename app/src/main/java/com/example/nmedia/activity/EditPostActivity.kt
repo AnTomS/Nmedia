@@ -3,7 +3,9 @@ package com.example.nmedia.activity
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.nmedia.R
 import com.example.nmedia.databinding.ActivityEditPostBinding
 
 class EditPostActivity : AppCompatActivity() {
@@ -12,15 +14,15 @@ class EditPostActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val binding = ActivityEditPostBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        val content =intent.getStringExtra(Intent.EXTRA_TEXT)
         binding.content.requestFocus()
-        intent.getStringExtra(Intent.EXTRA_TEXT)?.let {
-            binding.content.setText(it)
-        }
+        binding.content.setText(content)
+
 
 
         binding.save.setOnClickListener {
             if (binding.content.text.isNullOrBlank()) {
+                Toast.makeText(it.context, getString(R.string.empty_post_error), Toast.LENGTH_SHORT)
                 setResult(Activity.RESULT_CANCELED, intent)
                 finish()
             }

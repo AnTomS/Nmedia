@@ -5,9 +5,10 @@ import androidx.lifecycle.MutableLiveData
 import com.example.nmedia.dto.Post
 
 class InMemoryPostRepository : PostRepository {
+    private var nextId : Long = 1
     private var posts = listOf(
         Post(
-            id = 10,
+            id = ++nextId,
             author = "Нетология. Университет интернет-профессий будущего",
             authorAvatar = "",
             published = "01 августа в 11:21",
@@ -18,7 +19,7 @@ class InMemoryPostRepository : PostRepository {
             shareCount = 97,
         ),
         Post(
-            id = 9,
+            id = ++nextId,
             author = "Нетология. Университет интернет-профессий будущего",
             authorAvatar = "",
             published = "21 марта в 11:21",
@@ -29,7 +30,7 @@ class InMemoryPostRepository : PostRepository {
             shareCount = 97,
         ),
         Post(
-            id = 8,
+            id = ++nextId,
             author = "Нетология. Университет интернет-профессий будущего",
             authorAvatar = "",
             published = "01 апреля в 12:11",
@@ -40,7 +41,7 @@ class InMemoryPostRepository : PostRepository {
             shareCount = 197,
         ),
         Post(
-            id = 7,
+            id = ++nextId,
             author = "Нетология. Университет интернет-профессий будущего",
             authorAvatar = "",
             published = "21 мая в 21:00",
@@ -51,7 +52,7 @@ class InMemoryPostRepository : PostRepository {
         ),
 
         Post(
-            id = 6,
+            id = ++nextId,
             author = "Нетология. Университет интернет-профессий будущего",
             authorAvatar = "",
             published = "12 июля в 18:36",
@@ -86,7 +87,7 @@ class InMemoryPostRepository : PostRepository {
     }
 
     override fun removeById(id: Long) {
-        posts = posts.filter { it.id != id }
+        posts = posts.filter { it.id == id }
         data.value = posts
     }
 
@@ -94,7 +95,7 @@ class InMemoryPostRepository : PostRepository {
         posts = if (post.id == 0L) {
             listOf(
                 post.copy(
-                    id = posts.firstOrNull()?.id ?: 1L + 1,
+                    id = ++nextId,
                     author = "Me",
                     published = "now",
                     liked = false,
@@ -104,7 +105,7 @@ class InMemoryPostRepository : PostRepository {
             ) + posts
         } else {
             posts.map {
-                if (it.id == post.id) it.copy(content = post.content) else it
+                if (it.id != post.id) it else it.copy(content = post.content)
             }
         }
         data.value = posts
