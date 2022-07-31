@@ -7,13 +7,13 @@
     <string name="post_author_avatar" translatable="false">Аватар</string>
     <string name="description_menu" translatable="false">Меню</string>
     <string name="post_menu_remove" translatable="false" tools:ignore="MissingTranslation">Удалить</string>
-    <string name="post_input_text" translatable="false" tools:ignore="MissingTranslation">Post text</string>
-    <string name="empty_post_error" translatable="false" tools:ignore="MissingTranslation">Post is blank</string>
-    <string name="menu_edit" tools:ignore="MissingTranslation">Edit</string>
-    <string name="edit_message" tools:ignore="MissingTranslation">Edit massage</string>
-    <string name="description_cancel" tools:ignore="MissingTranslation">description cancel</string>
-    <string name="description_bottom_line_edit" tools:ignore="MissingTranslation">Description bottom edit</string>
-    <string name="empry_content_error">Content is empty</string>
-    <string name="chooser_share_post">Choose App</string>
-    <string name="close_edit_post">closeEditPost</string>
+    <string name="post_input_text" translatable="false" tools:ignore="MissingTranslation">Введите текст</string>
+    <string name="empty_post_error" translatable="false" tools:ignore="MissingTranslation">Пост не содержит текст</string>
+    <string name="menu_edit" tools:ignore="MissingTranslation" translatable="false">Изменить</string>
+    <string name="edit_message" tools:ignore="MissingTranslation" translatable="false">Изменить сообщение</string>
+    <string name="description_cancel" tools:ignore="MissingTranslation" translatable="false">Отмена</string>
+    <string name="description_bottom_line_edit" tools:ignore="MissingTranslation" translatable="false">Кнопка</string>
+    <string name="empry_content_error" translatable="false">Нет текста</string>
+    <string name="chooser_share_post" translatable="false">Выберите приложение</string>
+    <string name="close_edit_post" translatable="false">Закрыть изменяемый пост</string>
 </resources>
