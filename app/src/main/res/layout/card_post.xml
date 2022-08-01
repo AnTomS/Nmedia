@@ -77,12 +77,27 @@
         app:layout_constraintTop_toBottomOf="@id/barrier"
         tools:text="@sample/posts.json/data/content" />
 
+    <ImageView
+        android:id="@+id/video"
+        android:layout_width="@dimen/posts_video_preview_width"
+        android:layout_height="@dimen/posts_video_preview_height"
+        android:visibility="gone"
+        android:clickable="true"
+        app:layout_constraintTop_toBottomOf="@id/content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/down_barrier"/>
+
+
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/down_barrier"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:barrierDirection="bottom"
-        app:constraint_referenced_ids="content" />
+        app:barrierDirection="top"
+        app:constraint_referenced_ids="likes, shares, viewership"
+        app:layout_constraintTop_toBottomOf="@id/video"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 
     <com.google.android.material.button.MaterialButton
@@ -126,6 +141,8 @@
         tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck"
         style="@style/Theme.NMedia.ShareViewedButton"
         tools:text="15" />
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

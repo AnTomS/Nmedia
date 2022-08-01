@@ -4,6 +4,7 @@ package com.example.nmedia.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.PopupMenu
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nmedia.R
@@ -18,6 +19,7 @@ interface OnInterfuctionListener {
     fun onShare(post: Post) {}
     fun onEdit(post: Post) {}
     fun onRemove(post: Post) {}
+    fun onVideo(post: Post)
 }
 
 class PostsAdapter(
@@ -52,6 +54,15 @@ class PostViewHolder(
             likes.text = formatCount(post.likeCount)
             shares.text= formatCount(post.shareCount)
             likes.isChecked = post.liked
+
+            video.setImageResource(R.mipmap.video_img)
+            video.isVisible = !post.video.isNullOrBlank()
+            if (video.isVisible) {
+                video.setOnClickListener {
+                    listener.onVideo(post)
+                }
+            }
+
 
             shares.setOnClickListener {
                 listener.onShare(post)
