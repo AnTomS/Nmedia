@@ -22,7 +22,7 @@ class EditPostActivity : AppCompatActivity() {
 
         binding.save.setOnClickListener {
             if (binding.content.text.isNullOrBlank()) {
-                Toast.makeText(it.context, getString(R.string.empty_post_error), Toast.LENGTH_SHORT)
+                Toast.makeText(it.context, getString(R.string.empty_post_error), Toast.LENGTH_SHORT).show()
                 setResult(Activity.RESULT_CANCELED, intent)
                 finish()
             }

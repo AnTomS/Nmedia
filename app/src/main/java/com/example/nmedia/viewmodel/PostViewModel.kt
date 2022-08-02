@@ -1,10 +1,13 @@
 package com.example.nmedia.viewmodel
 
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.nmedia.dto.Post
 import com.example.nmedia.repository.InMemoryPostRepository
 import com.example.nmedia.repository.PostRepository
+import com.example.nmedia.repository.PostRepositorySharedPrefsImp
 
 val empty = Post(
     0,
@@ -17,15 +20,15 @@ val empty = Post(
     0
 )
 
-class PostViewModel : ViewModel() {
-    private val repository: PostRepository = InMemoryPostRepository()
+class PostViewModel (application: Application) : AndroidViewModel(application) {
+    private val repository: PostRepository = PostRepositorySharedPrefsImp(application)
     val data = repository.get()
     fun likeById(id: Long) = repository.likeById(id)
 
     fun share(id: Long) = repository.share(id)
     fun removeById(id: Long) = repository.removeById(id)
 
-    val edited = MutableLiveData(empty)
+    private val edited = MutableLiveData(empty)
 
     fun edit(post: Post) {
         edited.value = post

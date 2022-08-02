@@ -8,7 +8,8 @@ fun formatCount(count: Long): String {
     return when (count) {
         in 0..999 -> count.toString()
         in 1000..999_99 -> "${
-            round(count.toDouble() / 1000).toLong()}K"
+            round(count.toDouble() / 1000).toLong()
+        }K"
         in 100_000..999_999 -> "${(count.toDouble() / 1000).toLong()}K"
         in 1_000_000..9_000_000 -> "${
             df.format(count.toDouble() / 1000000).toString().toLong()
