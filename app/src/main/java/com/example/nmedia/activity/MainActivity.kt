@@ -1,6 +1,5 @@
 package com.example.nmedia.activity
 
-import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
@@ -77,17 +76,11 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 override fun onVideo(post: Post) {
-                    val appIntent = Intent(
-                        Intent.ACTION_VIEW,
-                        Uri.parse("vnd.youtube:" + post.video)
-                    )
                     val webIntent = Intent(
                         Intent.ACTION_VIEW,
                         Uri.parse("http://www.youtube.com/watch?v=" + post.video)
                     )
-                    try {
-                        startActivity(appIntent)
-                    } catch (e: ActivityNotFoundException) {
+                    run {
                         startActivity(webIntent)
                     }
                 }
