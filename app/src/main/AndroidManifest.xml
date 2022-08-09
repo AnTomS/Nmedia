@@ -14,21 +14,27 @@
         android:theme="@style/Theme.Nmedia"
         tools:targetApi="32">
         <activity
-            android:name=".activity.NewPostActivity"
-            android:exported="false">
-        </activity>
-        <activity
-            android:name=".activity.MainActivity"
+            android:name=".activity.AppActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <nav-graph android:value="@navigation/nav_main" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
+        <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="text/plain" />
             </intent-filter>
+
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+
+        </intent-filter>
+
         </activity>
-        <activity
-            android:name=".activity.EditPostActivity"
-            android:exported="false" />
-    </application>
+
+        </application>
 
 </manifest>

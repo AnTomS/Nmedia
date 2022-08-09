@@ -3,9 +3,7 @@ package com.example.nmedia.viewmodel
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.example.nmedia.dto.Post
-import com.example.nmedia.repository.InMemoryPostRepository
 import com.example.nmedia.repository.PostRepository
 import com.example.nmedia.repository.PostRepositorySharedPrefsImp
 
@@ -20,7 +18,7 @@ val empty = Post(
     0
 )
 
-class PostViewModel (application: Application) : AndroidViewModel(application) {
+class PostViewModel(application: Application) : AndroidViewModel(application) {
     private val repository: PostRepository = PostRepositorySharedPrefsImp(application)
     val data = repository.get()
     fun likeById(id: Long) = repository.likeById(id)
@@ -38,7 +36,8 @@ class PostViewModel (application: Application) : AndroidViewModel(application) {
         edited.value?.let {
             repository.save(it)
         }
-        edited.value = empty
+            edited.value = empty
+
     }
 
     fun editContent(content: String) {
@@ -49,10 +48,6 @@ class PostViewModel (application: Application) : AndroidViewModel(application) {
             }
             edited.value = it.copy(content = trimmed)
         }
-    }
-
-    fun editingClear() {
-        edited.value = empty
     }
 
 }

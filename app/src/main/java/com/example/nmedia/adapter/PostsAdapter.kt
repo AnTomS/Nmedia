@@ -20,6 +20,7 @@ interface OnInterfuctionListener {
     fun onEdit(post: Post) {}
     fun onRemove(post: Post) {}
     fun onVideo(post: Post)
+    fun onPost(post: Post)
 }
 
 class PostsAdapter(
@@ -71,6 +72,10 @@ class PostViewHolder(
             likes.setOnClickListener {
                 listener.onLike(post)
             }
+            content.setOnClickListener {
+                listener.onPost(post)
+            }
+
             menu.setOnClickListener {
                 PopupMenu(it.context, it).apply {
                     inflate(R.menu.post_menu)

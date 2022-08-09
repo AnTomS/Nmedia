@@ -10,7 +10,7 @@ import com.google.gson.reflect.TypeToken
 
 class PostRepositorySharedPrefsImp(
     private val context: Context
-    ) : PostRepository {
+) : PostRepository {
 
     private val gson = Gson()
     private val prefs = context.getSharedPreferences("rero", Context.MODE_PRIVATE)
@@ -34,13 +34,14 @@ class PostRepositorySharedPrefsImp(
     }
 
     private fun sync() {
-        context.openFileOutput(filename, Context.MODE_PRIVATE).bufferedWriter().use {
-            it.write(gson.toJson(posts))
+        with(prefs.edit()) {
+            putString(key, gson.toJson(posts))
+            apply()
         }
     }
 
 
-    override fun get(): LiveData<List<Post>>  = data
+    override fun get(): LiveData<List<Post>> = data
 
     override fun likeById(id: Long) {
         posts = posts.map {
@@ -62,7 +63,7 @@ class PostRepositorySharedPrefsImp(
     }
 
     override fun removeById(id: Long) {
-        posts = posts.filter { it.id == id }
+        posts = posts.filter { it.id != id }
         data.value = posts
         sync()
     }
@@ -84,9 +85,11 @@ class PostRepositorySharedPrefsImp(
                 if (it.id != post.id) it else it.copy(content = post.content)
             }
         }
+
         data.value = posts
         sync()
     }
+
 }
 
 
