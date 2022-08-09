@@ -16,5 +16,5 @@
     <string name="empry_content_error" translatable="false">Нет текста</string>
     <string name="chooser_share_post" translatable="false">Выберите приложение</string>
     <string name="close_edit_post" translatable="false">Закрыть изменяемый пост</string>
-    <string name="save_new_post">save new post</string>
+    <string name="save_new_post" translatable="false">Сохранить новый пост</string>
 </resources>
