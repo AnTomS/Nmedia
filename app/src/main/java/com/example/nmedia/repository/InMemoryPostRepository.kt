@@ -95,7 +95,7 @@ class InMemoryPostRepository : PostRepository {
         posts = if (post.id == 0L) {
             listOf(
                 post.copy(
-                    id = ++nextId,
+                    id = posts.firstOrNull()?.id?.plus(1) ?: 1L,
                     author = "Me",
                     published = "now",
                     liked = false,
